@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @Service
 public class UserService {
     @Autowired
-    private UserRepository _repository;
+    private UserRepository repository;
 
     public void validateTransaction(User sender, BigDecimal amount) throws Exception {
         if(sender.getUserType() == UserType.MERCHANT){
@@ -24,10 +24,10 @@ public class UserService {
     }
 
     public User findUserById(Long id) throws Exception {
-        return this._repository.findUserById(id).orElseThrow(() -> new Exception("Usuári0 não encontrado"));
+        return this.repository.findUserById(id).orElseThrow(() -> new Exception("Usuári0 não encontrado"));
     }
 
     public void saveUser(User user){
-        this._repository.save(user);
+        this.repository.save(user);
     }
 }
